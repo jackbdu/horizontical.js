@@ -1,5 +1,5 @@
 /*
- * horizontical.js v0.0.1 (https://github.com/jackbdu/horizontical.js)
+ * horizontical.js v0.0.2 (https://github.com/jackbdu/horizontical.js)
  * @copyright 2020 Jack B. Du
  * @license MIT (https://github.com/jackbdu/horizontical.js/blob/master/LICENSE)
  */
@@ -9,11 +9,15 @@ function updateHorizontical(event) {
   let hviewports = document.querySelectorAll('.h-wrapper .h-viewport');
   let hcontainers = document.querySelectorAll('.h-wrapper .h-viewport .h-container');
   for (let i = 0; i < hwrappers.length && i < hcontainers.length && i < hviewports.length; i++) {
+    let hwrapperStyle = window.getComputedStyle ? window.getComputedStyle(hwrappers[i]) : hwrappers[i].currentStyle;
     if (event === "resize") {
-      hwrappers[i].style.height = (hcontainers[i].offsetWidth - hviewports[i].clientWidth + hviewports[i].offsetHeight + parseFloat(window.getComputedStyle(hwrappers[i]).getPropertyValue('padding-top')) + parseFloat(window.getComputedStyle(hwrappers[i]).getPropertyValue('padding-bottom')) + parseFloat(window.getComputedStyle(hwrappers[i]).getPropertyValue('border-top-width')) + parseFloat(window.getComputedStyle(hwrappers[i]).getPropertyValue('border-bottom-width'))) + 'px';
+      let hcontainerStyle = window.getComputedStyle ? window.getComputedStyle(hcontainers[i]) : hcontainers[i].currentStyle;
+      let hcontainerWidth = hcontainers[i].offsetWidth + parseFloat(hcontainerStyle.getPropertyValue('margin-left') || 0) + parseFloat(hcontainerStyle.getPropertyValue('margin-right') || 0);
+      let hwrapperExtras = parseFloat(hwrapperStyle.getPropertyValue('padding-top') || 0) + parseFloat(hwrapperStyle.getPropertyValue('padding-bottom') || 0) + parseFloat(hwrapperStyle.getPropertyValue('border-top-width') || 0) + parseFloat(hwrapperStyle.getPropertyValue('border-bottom-width') || 0)
+      hwrappers[i].style.height = (hcontainerWidth - hviewports[i].clientWidth + hviewports[i].offsetHeight + hwrapperExtras) + 'px';
       hviewports[i].style = "overflow-x: hidden; position: sticky; position: webkit-sticky; top: 0;";
     } else if (event === "scroll") {
-      let scrollDistance = hviewports[i].offsetTop - hwrappers[i].offsetTop - parseFloat(window.getComputedStyle(hwrappers[i]).getPropertyValue('padding-top')) - parseFloat(window.getComputedStyle(hwrappers[i]).getPropertyValue('border-top-width'));
+      let scrollDistance = hviewports[i].offsetTop - hwrappers[i].offsetTop - parseFloat(hwrapperStyle.getPropertyValue('padding-top') || 0) - parseFloat(hwrapperStyle.getPropertyValue('border-top-width') || 0);
       hcontainers[i].style.transform = "translateX(-" + scrollDistance + 'px)';
     }
   }
