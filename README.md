@@ -2,7 +2,7 @@
 
 Horizontal HTML element movement triggered by vertical scrolling.
 
-Check out the [demo](jackbdu.github.io/horizontical.js) or see its [source code](index.html).
+Check out the [demo](https://jackbdu.github.io/horizontical.js) or see its [source code](index.html).
 
 ## Setup
 
