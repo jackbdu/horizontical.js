@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Horizontical.js Demo</title>
+    <style>
+      /* page styles for aesthetics */
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+      .section {
+        padding: 2em 10em;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100vh;
+      }
+      .section h1 {
+        margin: 0;
+        padding: 1em 0;
+        width: 100%;
+        text-align: center;
+      }
+      .section li {
+        padding: 1em;
+        list-style: none;
+        line-height: 2em;
+      }
+      .subsection {
+        flex-grow: 1;
+        height: 100%;
+      }
+      .subsection h2 {
+        margin: 0;
+        padding: 1em;
+      }
+
+      /* background colors for readability */
+      .section:nth-child(odd) {
+        background-color: #eee;
+      }
+      .section:nth-child(even) {
+        background-color: #ccc;
+      }
+      .subsection:nth-child(even) {
+        background-color: #aaa;
+      }
+      .subsection:nth-child(odd) {
+        background-color: #888;
+      }
+      
+      /* border colors for distinguishing different horizontical elements */
+      .h-wrapper, .h-wrapper-text {
+        box-sizing: border-box;
+        border: 10px dashed red;
+      }
+      .h-viewport, .h-viewport-text {
+        box-sizing: border-box;
+        border: 10px dashed blue;
+      }
+      .h-container, .h-container-text {
+        box-sizing: border-box;
+        border: 10px dashed green;
+      }
+
+      /* styles that adjust the horizontical element behaviors */
+      .h-viewport {
+        height: 100vh;
+      }
+      .h-container {
+        width: 300vw;
+        height: 40vh;
+        display: flex;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <h1>Section One</h1>
+    </div>
+    <div class="section h-wrapper">
+      <div class="h-viewport">
+        <h1>Section Two</h1>
+        <ul>
+          <li><span class="h-wrapper-text">h-wrapper</span> is the area of the page being vertically scrolled through under the hood. Its height is dynamically adjusted by the library so that it's the perfect amount to be scrolled in order to display all the elements in <strong>h-container</strong>.</li>
+          <li><span class="h-viewport-text">h-viewport</span> is the visible area of the horizontically scrolled elements.</li>
+          <li><span class="h-container-text">h-container</span> contains the elements to be moved horizontically.</li>
+        </ul>
+        <div class="h-container">
+          <div class="subsection">
+            <h2>Subsection 1</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 2</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 3</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 4</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 5</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 6</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <h1>Section Three</h1>
+    </div>
+    <div class="section">
+      <h1>Section Four</h1>
+    </div>
+    <div class="section h-wrapper">
+      <div class="h-viewport">
+        <h1>Section Five</h1>
+        <ul>
+          <li><span class="h-wrapper-text">h-wrapper</span> is the area of the page being vertically scrolled through under the hood. Its height is dynamically adjusted by the library so that it's the perfect amount to be scrolled in order to display all the elements in <strong>h-container</strong>.</li>
+          <li><span class="h-viewport-text">h-viewport</span> is the visible area of the horizontically scrolled elements.</li>
+          <li><span class="h-container-text">h-container</span> contains the elements to be moved horizontically.</li>
+        </ul>
+        <div class="h-container">
+          <div class="subsection">
+            <h2>Subsection 1</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 2</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 3</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 4</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 5</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 6</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 7</h2>
+          </div>
+          <div class="subsection">
+            <h2>Subsection 8</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="horizontical.js"></script>
+</html>
