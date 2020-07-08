@@ -1,5 +1,5 @@
 /*
- * horizontical.js v0.0.2 (https://github.com/jackbdu/horizontical.js)
+ * horizontical.js v0.0.3 (https://github.com/jackbdu/horizontical.js)
  * @copyright 2020 Jack B. Du
  * @license MIT (https://github.com/jackbdu/horizontical.js/blob/master/LICENSE)
  */
@@ -12,12 +12,12 @@ function updateHorizontical(event) {
     let hwrapperStyle = window.getComputedStyle ? window.getComputedStyle(hwrappers[i]) : hwrappers[i].currentStyle;
     if (event === "resize") {
       let hcontainerStyle = window.getComputedStyle ? window.getComputedStyle(hcontainers[i]) : hcontainers[i].currentStyle;
-      let hcontainerWidth = hcontainers[i].offsetWidth + parseFloat(hcontainerStyle.getPropertyValue('margin-left') || 0) + parseFloat(hcontainerStyle.getPropertyValue('margin-right') || 0);
-      let hwrapperExtras = parseFloat(hwrapperStyle.getPropertyValue('padding-top') || 0) + parseFloat(hwrapperStyle.getPropertyValue('padding-bottom') || 0) + parseFloat(hwrapperStyle.getPropertyValue('border-top-width') || 0) + parseFloat(hwrapperStyle.getPropertyValue('border-bottom-width') || 0)
+      let hcontainerWidth = hcontainers[i].offsetWidth + parseFloat(hcontainerStyle.marginLeft || 0) + parseFloat(hcontainerStyle.marginRight || 0);
+      let hwrapperExtras = parseFloat(hwrapperStyle.paddingTop || 0) + parseFloat(hwrapperStyle.paddingBottom || 0) + parseFloat(hwrapperStyle.borderTopWidth || 0) + parseFloat(hwrapperStyle.borderBottomWidth || 0)
       hwrappers[i].style.height = (hcontainerWidth - hviewports[i].clientWidth + hviewports[i].offsetHeight + hwrapperExtras) + 'px';
       hviewports[i].style = "overflow-x: hidden; position: sticky; position: webkit-sticky; top: 0;";
     } else if (event === "scroll") {
-      let scrollDistance = hviewports[i].offsetTop - hwrappers[i].offsetTop - parseFloat(hwrapperStyle.getPropertyValue('padding-top') || 0) - parseFloat(hwrapperStyle.getPropertyValue('border-top-width') || 0);
+      let scrollDistance = hviewports[i].offsetTop - hwrappers[i].offsetTop - parseFloat(hwrapperStyle.paddingTop || 0) - parseFloat(hwrapperStyle.borderTopWidth || 0);
       hcontainers[i].style.transform = "translateX(-" + scrollDistance + 'px)';
     }
   }
