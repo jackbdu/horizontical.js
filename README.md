@@ -41,3 +41,27 @@ Download and include ```horizontical.js``` in your document.
   /* note: the h-container width should be bigger than the viewport-width */
 }
 ```
+
+### JavaScript
+
+By default, the library is initialized on ```DOMContentLoaded```. If your horizontical HTML elements are loaded (or added) after ```DOMContentLoaded```, for instance, if you are using a client-side JavaScript template engine, you need to manually initialize the library after the horizontical HTML elements are loaded (or added).
+
+```javascript
+setTimeout(function() {
+
+  var hContainer = document.createElement('div');
+  var hViewport = document.createElement('div');
+  var hWrapper = document.createElement('div');
+
+  hContainer.className = 'h-container';
+  hViewport.className = 'h-viewport';
+  hWrapper.className = 'h-wrapper';
+
+  hViewport.appendChild(hContainer);
+  hWrapper.appendChild(hViewport);
+  document.body.appendChild(hWrapper);
+
+  horizontical.init();  // You need to manually initialize the library here
+
+}, 3000);
+```
