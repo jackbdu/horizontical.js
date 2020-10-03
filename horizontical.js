@@ -24,7 +24,7 @@ class Horizontical {
         let hcontainerWidth = this.hcontainers[i].offsetWidth + parseFloat(hcontainerStyle.marginLeft || 0) + parseFloat(hcontainerStyle.marginRight || 0);
         let hwrapperExtras = parseFloat(hwrapperStyle.paddingTop || 0) + parseFloat(hwrapperStyle.paddingBottom || 0) + parseFloat(hwrapperStyle.borderTopWidth || 0) + parseFloat(hwrapperStyle.borderBottomWidth || 0)
         this.hwrappers[i].style.height = (hcontainerWidth - this.hviewports[i].clientWidth + this.hviewports[i].offsetHeight + hwrapperExtras) + 'px';
-        this.hviewports[i].style = "overflow-x: hidden; position: sticky; position: webkit-sticky; top: 0;";
+        this.hviewports[i].style = "overflow-x: hidden; position: sticky; position: -webkit-sticky; top: 0;";
       } else if (event === "scroll") {
         let scrollDistance = this.hviewports[i].offsetTop - this.hwrappers[i].offsetTop - parseFloat(hwrapperStyle.paddingTop || 0) - parseFloat(hwrapperStyle.borderTopWidth || 0);
         this.hcontainers[i].style.transform = "translateX(-" + scrollDistance + 'px)';
